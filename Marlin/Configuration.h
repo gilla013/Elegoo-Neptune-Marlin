@@ -60,16 +60,16 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(mlee12382, just-trey, Elegoo Neptune)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "gilla013" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 // MAIN CONFIGURATION SWITCHES FOR FEATURES - see readme.md for more details.
 // ctrl+/ with your cursor on a line will comment / uncomment that line.
-// #define IS_BOARD_1_3              // uncomment if you have the 1.3 board, commented out for 1.2 board Be sure to change default_envs in PlatformIO.ini
-// #define HAS_BLTOUCH               // uncomment if you have a BLTouch or clone
+#define IS_BOARD_1_3              // uncomment if you have the 1.3 board, commented out for 1.2 board Be sure to change default_envs in PlatformIO.ini
+#define HAS_BLTOUCH               // uncomment if you have a BLTouch or clone
 // #define IS_2D                     // uncomment if you have a Neptune 2D (Dual extruder)
-// #define IS_2S					           // uncomment if you have a Neptune 2S (Always a 1.3 board) //mlee12382
-#define IS_X                      // BROKEN uncomment if you have a Neptune X make sure IS_BOARD_1_3 is commented and set platformio.ini to mks_neptune_x
+#define IS_2S					           // uncomment if you have a Neptune 2S (Always a 1.3 board) //mlee12382
+// #define IS_X                      // BROKEN uncomment if you have a Neptune X make sure IS_BOARD_1_3 is commented and set platformio.ini to mks_neptune_x
 // #define HAS_WIFI                  // uncomment if you have WIFI works with LVGL only NOT ColorUI //mlee12382
 #define IS_COLORUI                // uncomment if you want to use ColorUI which has more settings available from the touch screen but no WIFI or Thumbnail support  //mlee12382
 // #define IS_3                      // uncomment if you have a Neptune 3
@@ -177,15 +177,8 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#if ENABLED(IS_2D)
-  #define CUSTOM_MACHINE_NAME "Elegoo Neptune 2D"
-#elif ENABLED(IS_2S)
-  #define CUSTOM_MACHINE_NAME "Elegoo Neptune 2S"
-#elif ENABLED(IS_3)
-  #define CUSTOM_MACHINE_NAME "Elegoo Neptune 3"
-#else
-  #define CUSTOM_MACHINE_NAME "Elegoo Neptune 2"
-#endif
+
+#define CUSTOM_MACHINE_NAME "Gilla's Neptune 2S"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -287,12 +280,8 @@
 
 // This defines the number of extruders
 // :[0, 1, 2, 3, 4, 5, 6, 7, 8]
-#if ENABLED(IS_2D)
-  #define EXTRUDERS 2
-  #define SINGLENOZZLE
-#else
-  #define EXTRUDERS 1
-#endif
+
+#define EXTRUDERS 1
 
 // Generally expected filament diameter (1.75, 2.85, 3.0, ...). Used for Volumetric, Filament Width Sensor, etc.
 #define DEFAULT_NOMINAL_FILAMENT_DIA 1.75
@@ -1593,7 +1582,7 @@
  *     O-- FRONT --+
  */
 #if ENABLED(HAS_BLTOUCH)
-  #define NOZZLE_TO_PROBE_OFFSET { 32.55, 3, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { 51, -7, 0 }
 #else
   #define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0.2 }
 #endif
@@ -2039,8 +2028,8 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-//#define RESTORE_LEVELING_AFTER_G28
-#define ENABLE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
+// #define ENABLE_LEVELING_AFTER_G28
 
 /**
  * Auto-leveling needs preheating
@@ -2126,7 +2115,7 @@
 
     // Beyond the probed grid, continue the implied tilt?
     // Default is to maintain the height of the nearest edge.
-    //#define EXTRAPOLATE_BEYOND_GRID
+    #define EXTRAPOLATE_BEYOND_GRID
 
     //
     // Experimental Subdivision of the grid by Catmull-Rom method.
@@ -2196,7 +2185,7 @@
 #endif
 
 #if ENABLED(LCD_BED_TRAMMING)
-  #define BED_TRAMMING_INSET_LFRB { 35, 35, 35, 35 } // (mm) Left, Front, Right, Back insets
+  #define BED_TRAMMING_INSET_LFRB { 51, 35, 35, 35 } // (mm) Left, Front, Right, Back insets
   #define BED_TRAMMING_HEIGHT      0.0        // (mm) Z height of nozzle at leveling points
   #define BED_TRAMMING_Z_HOP       4.0        // (mm) Z height of nozzle between leveling points
   #define BED_TRAMMING_INCLUDE_CENTER       // Move to the center after the last corner
