@@ -77,7 +77,7 @@
 // #define THEME_BLUE                // BROKEN, future option for easy selection of blue theme, currently won't compile :(
 
 // Define missing pins
-// #define MT_DET_PIN_STATE        LOW
+#define MT_DET_PIN_STATE        LOW
 
 // Set dark background color for higher contrast.
 #define COLOR_BACKGROUND        COLOR_DARK
@@ -2037,7 +2037,7 @@
 #define PREHEAT_BEFORE_LEVELING
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
   #if NONE(NO_NOZZLE_PREHEAT)
-    #define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
+    #define LEVELING_NOZZLE_TEMP 180   // (°C) Only applies to E0 at this time
   #endif
   #define LEVELING_BED_TEMP     65
 #endif
@@ -2180,9 +2180,9 @@
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-#if NONE(IS_3)
-  #define LCD_BED_TRAMMING
-#endif
+// #if NONE(IS_3) //gpa turned off this manual leveling. Use tramming wizard
+//   #define LCD_BED_TRAMMING
+// #endif
 
 #if ENABLED(LCD_BED_TRAMMING)
   #define BED_TRAMMING_INSET_LFRB { 51, 35, 35, 35 } // (mm) Left, Front, Right, Back insets
